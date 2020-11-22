@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      let socket = io();
+      let el;
+
+      socket.on('time', (timeString) => {
+        el = document.getElementById('server-time');
+        el.innerHTML = 'Server time: ' + timeString;
+      });
+
+      socket.on('heading', (header) => {
+          el = document.getElementById('header')
+          el.innerHTML = 'Server started at : '+ header
+      })
+
+      socket.on('receiveMessage',message => {
+          el = document.getElementById('messageBox')
+          el.innerHTML += '<div>'+message+'</div>'
+      })
+
+      function handleClick(){
+          //alert('clicked');
+          socket.emit('start','apple');
+          socket.emit('salutations','apple','pineapple','mango');
+      }
+    </script>
+  </head>
+  <body>
+    <p id="server-time"></p>
+    <h1 id="header">Welcome to WebSockets</h1>
+    <button id="start-button" onclick="handleClick()">Start Timer</button>
+    <div id="messageBox" ></div>
+  </body>
+</html>
