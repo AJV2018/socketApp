@@ -1,0 +1,68 @@
+#container {
+    display: flex;
+    flex: 1;
+    background-color: #f7f7f7;
+    flex-direction: column;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+
+#sendButton {
+    background-color: rgb(138, 43, 226);
+    border-radius: 1rem;
+    padding: 1rem ;
+    margin: 1rem 5rem;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    box-shadow: 0 5px #666;
+}
+
+#sendButton:hover {
+    background-color: rgba(138, 43, 226, 0.9);
+    ;
+}
+#sendButton:active {
+    background-color: rgb(138, 43, 226);
+    box-shadow: 0 0px #666;
+    transform: translateY(4px);
+}
+
+#messageInput{
+    margin: 1rem 5rem;
+    padding: 1rem;
+    height: 3rem;
+}
+
+#client{
+    margin: 1rem 5rem;
+    padding: 0.5rem;
+}
+#messageBox{
+    height: 50vh;
+    margin: 1rem 5rem;  
+    background-color: #fff;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+.receivedSms{
+    text-align: left;
+    padding: 1rem;
+    background-color: #f7f7f7;
+}
+.sentSms{
+    padding: 1rem;
+    text-align: right;
+}

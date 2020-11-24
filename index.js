@@ -1,8 +1,9 @@
 var express = require('express')
+var path = require('path')
 const INDEX = '/public/index.html'
 const PORT = process.env.PORT || 3000;
 const server = express()
-  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .use(express.static(path.join(__dirname, 'public')))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 var socket = require('socket.io')
@@ -19,15 +20,11 @@ io.on('connection',(socket) => {
         console.log(elem1, elem2, elem3);
       });
 
-    socket.on('sendMessage', message => {
-        io.emit('receiveMessage',message)
+    socket.on('sendMessage', data => {
+        io.emit('receiveMessage',data)
     })
 })
 
-let i = 0
-
-
-
-setInterval(() => io.emit('time', ++i), 1000);
+setInterval(() => io.emit('time', new Date().toLocaleString()), 1000);
 
 
