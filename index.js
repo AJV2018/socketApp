@@ -21,10 +21,19 @@ io.on('connection',(socket) => {
       });
 
     socket.on('sendMessage', data => {
+      console.log('sendmessage called')
         io.emit('receiveMessage',data)
+    })
+
+    socket.on('typing', client => {
+      console.log('a user is typing',client)
+      io.emit('userTyping',client)
     })
 })
 
 setInterval(() => io.emit('time', new Date().toLocaleString()), 1000);
+
+//var MongoDB = require('./serverScripts/Mongo').default
+//MongoDB.StartDB().catch(console.dir)
 
 
